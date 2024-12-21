@@ -84,6 +84,6 @@ public class Task1 {
         frame.add(mainPanel);
 
         // Set frame visible
-        frame.setVisible(true);
+        frame.setVisible(false);
     }
 }
