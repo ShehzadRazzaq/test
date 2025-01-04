@@ -4,7 +4,7 @@ import java.awt.*;
 public class Task1 {
     public static void main(String[] args) {
         // Create the frame
-        JFrame frame = new JFrame("Calculato");
+        JFrame frame = new JFrame("sANIYA");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(300, 400);
 
