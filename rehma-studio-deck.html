@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rehma Studio - Company Profile</title>
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --panel: rgba(255, 255, 255, 0.03);
+      --text: #f5f5f7;
+      --muted: #a7a9b2;
+      --accent: #9f7aea;
+      --line: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      max-width: 1366px;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(70% 60% at 80% 18%, rgba(159, 122, 234, 0.26), rgba(159, 122, 234, 0) 60%),
+        radial-gradient(50% 60% at 20% 88%, rgba(123, 97, 255, 0.14), rgba(123, 97, 255, 0) 68%),
+        linear-gradient(180deg, #111116 0%, #0a0a0d 100%);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 78px 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(44px, 5.2vw, 74px);
+      line-height: 1.08;
+      font-weight: 650;
+      max-width: 90%;
+    }
+    h2 {
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.1;
+      font-weight: 630;
+      max-width: 90%;
+    }
+    p {
+      font-size: clamp(17px, 1.6vw, 24px);
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 78%;
+    }
+
+    .kicker {
+      font-size: clamp(18px, 2vw, 28px);
+      color: #e6e6ec;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+
+    .accent { color: var(--accent); }
+
+    .list {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 28px;
+      max-width: 92%;
+      color: #e4e4ea;
+      font-size: clamp(17px, 1.5vw, 23px);
+    }
+
+    .single-list {
+      display: grid;
+      gap: 10px;
+      max-width: 86%;
+      color: #e4e4ea;
+      font-size: clamp(18px, 1.6vw, 25px);
+    }
+
+    .card-grid {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 98%;
+    }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+    .card h3 {
+      font-size: clamp(20px, 1.8vw, 30px);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .card p {
+      max-width: 100%;
+      font-size: clamp(15px, 1.2vw, 19px);
+    }
+
+    .timeline {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      max-width: 100%;
+    }
+    .step {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      padding: 14px;
+      min-height: 168px;
+    }
+    .step .num {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .step h3 {
+      font-size: clamp(16px, 1.4vw, 20px);
+      margin-bottom: 6px;
+    }
+    .step p {
+      max-width: 100%;
+      font-size: clamp(14px, 1.05vw, 16px);
+      line-height: 1.35;
+    }
+
+    .big-list {
+      display: grid;
+      gap: 12px;
+      font-size: clamp(22px, 2.2vw, 34px);
+      color: #efeff4;
+      line-height: 1.18;
+      margin-top: 8px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: clamp(16px, 1.25vw, 20px);
+      color: #d6d6df;
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      body { background: #000; }
+      .deck {
+        padding: 0;
+        gap: 0;
+      }
+      .slide {
+        width: 16in;
+        height: 9in;
+        max-width: none;
+        aspect-ratio: auto;
+        border: none;
+        border-radius: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">01 — Cover</div>
+        <h1>REHMA STUDIO</h1>
+        <p class="kicker">Building Brands That Look Premium, Convert Better, and Scale Faster.</p>
+        <p>Branding • Websites • Software • Automation</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">02 — Who We Are</div>
+        <h2>We Build Digital Infrastructure For Modern Businesses.</h2>
+        <p>Rehma Studio helps companies create a professional brand presence, launch high-converting websites, and streamline operations through software and automation.</p>
+        <p>We combine strategy, design, development, and AI to help businesses grow faster while maintaining a premium image.</p>
+        <div class="list">
+          <div>• Branding</div>
+          <div>• Website Design &amp; Development</div>
+          <div>• Software Development</div>
+          <div>• AI Automation</div>
+          <div>• UI/UX Design</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">03 — The Problem</div>
+        <h2>Most Businesses Lose Opportunities Before The First Conversation</h2>
+        <p>A prospect visits your website. Within seconds they decide:</p>
+        <div class="single-list">
+          <div>✕ Can I trust this company?</div>
+          <div>✕ Do they look established?</div>
+          <div>✕ Are they professional?</div>
+          <div>✕ Are they worth contacting?</div>
+        </div>
+        <p>Many businesses have excellent products and services but lose customers because their digital presence doesn't communicate credibility.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">04 — What We Do</div>
+        <h2>End-To-End Growth Infrastructure</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Brand Identity</h3>
+            <p>Logos, visual systems, brand guidelines, positioning.</p>
+          </article>
+          <article class="card">
+            <h3>Websites</h3>
+            <p>Modern, responsive websites designed for conversion.</p>
+          </article>
+          <article class="card">
+            <h3>Software Development</h3>
+            <p>Custom platforms, portals, dashboards, SaaS products.</p>
+          </article>
+          <article class="card">
+            <h3>AI &amp; Automation</h3>
+            <p>Automate repetitive processes and improve operational efficiency.</p>
+          </article>
+          <article class="card">
+            <h3>UI/UX Design</h3>
+            <p>User-centered digital experiences built for engagement and usability.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">05 — Why Clients Choose Us</div>
+        <h2>A Single Partner For Design, Technology, And Growth</h2>
+        <p>Instead of managing multiple vendors, businesses work with one team capable of delivering complete digital solutions.</p>
+        <div class="list">
+          <div>✓ Premium Design Quality</div>
+          <div>✓ Business-Focused Strategy</div>
+          <div>✓ Fast Execution</div>
+          <div>✓ Scalable Solutions</div>
+          <div>✓ Transparent Communication</div>
+          <div>✓ Long-Term Partnership</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">06 — Our Process</div>
+        <h2>A Structured Approach To Every Project</h2>
+        <div class="timeline">
+          <article class="step">
+            <div class="num">01</div>
+            <h3>Discover</h3>
+            <p>Understand goals, audience, and business challenges.</p>
+          </article>
+          <article class="step">
+            <div class="num">02</div>
+            <h3>Strategize</h3>
+            <p>Define direction, positioning, and requirements.</p>
+          </article>
+          <article class="step">
+            <div class="num">03</div>
+            <h3>Design</h3>
+            <p>Create experiences that build trust and drive action.</p>
+          </article>
+          <article class="step">
+            <div class="num">04</div>
+            <h3>Develop</h3>
+            <p>Build scalable, high-performance digital products.</p>
+          </article>
+          <article class="step">
+            <div class="num">05</div>
+            <h3>Launch &amp; Optimize</h3>
+            <p>Monitor performance and continuously improve results.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">07 — Results We Focus On</div>
+        <h2>We Measure Success By Business Impact</h2>
+        <div class="big-list">
+          <div>Increase credibility</div>
+          <div>Improve conversion rates</div>
+          <div>Generate more leads</div>
+          <div>Streamline operations</div>
+          <div>Create stronger customer experiences</div>
+          <div>Build long-term brand equity</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">08 — Selected Capabilities</div>
+        <h2>What We Can Build</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Websites</h3>
+            <p>Corporate Websites • Landing Pages • E-Commerce • Web Applications</p>
+          </article>
+          <article class="card">
+            <h3>Software</h3>
+            <p>Dashboards • Portals • Internal Systems • SaaS Platforms</p>
+          </article>
+          <article class="card">
+            <h3>Branding</h3>
+            <p>Logo Design • Visual Identity • Brand Guidelines • Marketing Assets</p>
+          </article>
+          <article class="card">
+            <h3>Automation</h3>
+            <p>AI Agents • Workflow Automation • Lead Management • Business Systems</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">09 — Why Rehma Studio</div>
+        <h2>Premium Quality Without Agency Complexity</h2>
+        <p>We combine creative thinking with technical execution.</p>
+        <p>Our clients work directly with experienced specialists who understand both design and business objectives.</p>
+        <p>No unnecessary layers. No inflated retainers. No generic solutions.</p>
+        <p class="kicker accent">Only work that creates measurable value.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">10 — Let's Build Something Valuable</div>
+        <h1>Rehma Studio</h1>
+        <p class="kicker">Branding. Websites. Software. Automation.</p>
+        <p class="footer">Email: rehmastudioofficial@gmail.com</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
