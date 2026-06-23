@@ -14,3 +14,4 @@ SCD-LabTask
 
 - Open `/home/runner/work/test/test/b2b-sales-deck.html` in a browser to review the 10-slide sales deck.
 - Export to PDF using the browser print dialog with landscape layout (same method as the Rehma deck).
+- A generated PDF is included at `/home/runner/work/test/test/b2b-sales-deck.pdf`.
