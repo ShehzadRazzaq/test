@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B Sales Deck</title>
+  <style>
+    :root {
+      --bg: #0a0a0d;
+      --panel: rgba(255, 255, 255, 0.03);
+      --text: #f5f5f7;
+      --muted: #a7a9b2;
+      --accent: #9f7aea;
+      --line: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .deck {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .slide {
+      position: relative;
+      width: 100%;
+      max-width: 1366px;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      background:
+        radial-gradient(70% 60% at 80% 18%, rgba(159, 122, 234, 0.26), rgba(159, 122, 234, 0) 60%),
+        radial-gradient(50% 60% at 20% 88%, rgba(123, 97, 255, 0.14), rgba(123, 97, 255, 0) 68%),
+        linear-gradient(180deg, #111116 0%, #0a0a0d 100%);
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 56px 56px;
+      pointer-events: none;
+    }
+
+    .inner {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 78px 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 {
+      font-size: clamp(44px, 5.2vw, 74px);
+      line-height: 1.08;
+      font-weight: 650;
+      max-width: 90%;
+    }
+    h2 {
+      font-size: clamp(34px, 3.8vw, 56px);
+      line-height: 1.1;
+      font-weight: 630;
+      max-width: 90%;
+    }
+    p {
+      font-size: clamp(17px, 1.6vw, 24px);
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: 78%;
+    }
+
+    .kicker {
+      font-size: clamp(18px, 2vw, 28px);
+      color: #e6e6ec;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+
+    .accent { color: var(--accent); }
+
+    .list {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 28px;
+      max-width: 96%;
+      color: #e4e4ea;
+      font-size: clamp(17px, 1.5vw, 23px);
+    }
+
+    .single-list {
+      display: grid;
+      gap: 10px;
+      max-width: 92%;
+      color: #e4e4ea;
+      font-size: clamp(18px, 1.6vw, 25px);
+    }
+
+    .card-grid {
+      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: 100%;
+      max-width: 98%;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .card h3 {
+      font-size: clamp(20px, 1.8vw, 30px);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      max-width: 100%;
+      font-size: clamp(15px, 1.2vw, 19px);
+    }
+
+    .big-list {
+      display: grid;
+      gap: 12px;
+      font-size: clamp(22px, 2.2vw, 34px);
+      color: #efeff4;
+      line-height: 1.18;
+      margin-top: 8px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      font-size: clamp(16px, 1.25vw, 20px);
+      color: #d6d6df;
+    }
+
+    @media print {
+      @page { size: 16in 9in; margin: 0; }
+      body { background: #000; }
+      .deck { padding: 0; gap: 0; }
+      .slide {
+        width: 16in;
+        height: 9in;
+        max-width: none;
+        aspect-ratio: auto;
+        border: none;
+        border-radius: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">01 — Target Market &amp; ICP</div>
+        <h1>B2B Service Companies</h1>
+        <p class="kicker">Businesses that rely on trust, credibility, and lead generation to grow.</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Industries</h3>
+            <p>Logistics • Manufacturing • Wholesale Distribution • Consulting • Recruitment • IT Services • Engineering Services</p>
+          </article>
+          <article class="card">
+            <h3>Company Profile</h3>
+            <p>Revenue: $500K – $10M+ • Employees: 10–100 • Age: 3–20 Years • Location: USA, Canada, UK, Australia, UAE • Decision Makers: Founder, CEO, Managing Director, Owner, Operations Director</p>
+          </article>
+        </div>
+        <p>Core Need: Generate more leads, build credibility, and improve operational efficiency.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">02 — Why This Market</div>
+        <h2>Strong Budgets, Clear ROI, and Accessible Decision Makers</h2>
+        <div class="single-list">
+          <div>✓ High Purchasing Power — Projects commonly range from $5,000–$20,000+.</div>
+          <div>✓ Clear ROI — Better websites, stronger brands, and automation directly impact revenue.</div>
+          <div>✓ Easy To Reach — Decision makers are accessible via LinkedIn, email, and company websites.</div>
+          <div>✓ Underserved Digitally — Many established businesses still rely on outdated sites and manual processes.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">03 — What Problems They Have</div>
+        <h2>Three Core Problem Areas</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Credibility Problems</h3>
+            <p>Outdated website • Weak branding • Poor online presence</p>
+          </article>
+          <article class="card">
+            <h3>Lead Generation Problems</h3>
+            <p>Low inquiry volume • Poor conversion rates • Weak calls-to-action</p>
+          </article>
+          <article class="card">
+            <h3>Operational Problems</h3>
+            <p>Manual workflows • No CRM setup • No automation</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">04 — Prospect Qualification Signals</div>
+        <h2>Target Companies Showing At Least 3 Signals</h2>
+        <div class="list">
+          <div>✓ Website older than 3 years</div>
+          <div>✓ Having No website</div>
+          <div>✓ Poor mobile experience</div>
+          <div>✓ No clear CTA</div>
+          <div>✓ No lead capture system</div>
+          <div>✓ Inconsistent branding</div>
+          <div>✓ Active LinkedIn presence</div>
+          <div>✓ Growing team</div>
+          <div>✓ Recent expansion</div>
+          <div>✓ Running advertisements</div>
+          <div>✓ Revenue above $500K</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">05 — What We Sell</div>
+        <h2>We Don’t Sell Services. We Sell Outcomes.</h2>
+        <p class="kicker accent">Digital Growth Infrastructure</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Not Services</h3>
+            <p>Logo Design • Website Design • Software Development • Automation</p>
+          </article>
+          <article class="card">
+            <h3>Outcomes</h3>
+            <p>Look more credible • Generate qualified leads • Improve customer experience • Reduce manual work • Scale operations</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">06 — Outreach Channels</div>
+        <h2>Quality Over Volume Channel Priorities</h2>
+        <div class="single-list">
+          <div>Priority 1 — Cold Email</div>
+          <div>Priority 2 — LinkedIn Outreach</div>
+          <div>Priority 3 — Personalized Video Audits</div>
+          <div>Priority 4 — Referrals &amp; Introductions</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">07 — Outreach Messaging Formula</div>
+        <h2>Simple, Personalized, High-Relevance Structure</h2>
+        <div class="single-list">
+          <div>Observation — “I noticed...”</div>
+          <div>Problem — “This may be limiting...”</div>
+          <div>Opportunity — “We’ve helped businesses improve...”</div>
+          <div>CTA — “Would you be open to a few suggestions?”</div>
+        </div>
+        <p>Avoid: Long pitches, generic templates, and selling immediately.</p>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">08 — High-Intent Buying Signals</div>
+        <h2>Prioritize Companies Showing Buying Momentum</h2>
+        <div class="single-list">
+          <div>Are Hiring — Growth creates operational and branding needs.</div>
+          <div>Recently Rebranded — Often followed by website and system upgrades.</div>
+          <div>Expanded Services — Requires updated positioning and lead generation.</div>
+          <div>Increased Marketing Activity — Indicates willingness to invest.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">09 — Success Metrics</div>
+        <h2>Track Weekly Activity and Monthly Outcomes</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Weekly</h3>
+            <p>Qualified Leads Found • Emails Sent • LinkedIn Messages Sent • Responses</p>
+          </article>
+          <article class="card">
+            <h3>Monthly</h3>
+            <p>Discovery Calls • Proposals Sent • Deals Closed</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="inner">
+        <div class="eyebrow">10 — Mission</div>
+        <h1>Build A Consistent Pipeline Of Qualified B2B Opportunities</h1>
+        <p class="kicker">Target companies with real budgets, real business problems, and real growth goals.</p>
+        <p class="footer">Focus on relevance, personalization, and consistency.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
